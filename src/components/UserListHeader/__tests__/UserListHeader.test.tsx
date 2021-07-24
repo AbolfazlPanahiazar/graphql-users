@@ -6,7 +6,7 @@ describe("User List Header", () => {
   test("render header", () => {
     const { getByTestId } = render(<UserListHeader />);
     const header = getByTestId("userListHeader");
-    expect(header).toBeTruthy();
+    expect(header).toBeInTheDocument();
   });
 
   test("render text", () => {

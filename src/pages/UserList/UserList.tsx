@@ -3,6 +3,7 @@ import { RouteComponentProps } from "react-router-dom";
 import { useLazyQuery } from "@apollo/client";
 
 import UserListHeader from "components/UserListHeader/UserListHeader";
+import ListItem from "components/ListItem/ListItem";
 import { GET_USERS } from "GraphQL/queries";
 
 const UserList: FC<RouteComponentProps> = (): ReactElement => {
@@ -14,15 +15,19 @@ const UserList: FC<RouteComponentProps> = (): ReactElement => {
   });
 
   useEffect(() => {
-    console.log(error);
-    if (data) {
-      console.log(data);
-    }
-  }, [data, error]);
+    getUsers();
+  }, []);
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   return (
     <div>
       <UserListHeader />
+      {/* user list - start */}
+      {loading ? "loading" : data.users.data.map((user: any) => <ListItem {...user} />)}
+      {/* user list - end */}
       <button onClick={() => getUsers()}>click</button>
     </div>
   );

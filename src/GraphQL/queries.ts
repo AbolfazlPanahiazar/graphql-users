@@ -11,6 +11,8 @@ export const GET_USERS = gql`
         lastName
         picture
         email
+        id
+        title
       }
     }
   }
