@@ -7,6 +7,7 @@ const NotFound = lazy(() => import("pages/NotFound/NotFound"));
 
 // route interface
 interface IRoute {
+  id: string;
   exact: boolean;
   path?: string;
   component: FC<RouteComponentProps>;
@@ -15,11 +16,13 @@ interface IRoute {
 // page routes
 const routes: IRoute[] = [
   {
+    id: "1",
     exact: true,
     path: "/",
     component: UserList,
   },
   {
+    id: "2",
     exact: false,
     component: NotFound,
   },

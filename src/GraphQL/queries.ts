@@ -6,6 +6,7 @@ export const GET_USERS = gql`
       page
       limit
       offset
+      total
       data {
         firstName
         lastName

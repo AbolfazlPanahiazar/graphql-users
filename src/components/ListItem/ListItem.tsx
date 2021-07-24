@@ -17,7 +17,7 @@ const ListItem: FC<IUser> = ({ picture, firstName, lastName, email, title }): Re
     >
       {/* user picture - start */}
       <div className="p-1">
-        <img data-testid="image" className="rounded-full" src={picture} alt="user picture" />
+        <img data-testid="image" className="rounded-full w-80 h-80 object-cover" src={picture} alt="user picture" />
       </div>
       {/* user picture - end */}
 

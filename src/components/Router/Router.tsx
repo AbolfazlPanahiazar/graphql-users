@@ -9,7 +9,7 @@ const Router: FC = (): ReactElement => {
       <BrowserRouter>
         <Switch>
           {routes.map((route) => (
-            <Route key={route.path} {...route} />
+            <Route key={route.id} {...route} />
           ))}
         </Switch>
       </BrowserRouter>
