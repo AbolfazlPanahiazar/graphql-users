@@ -1,8 +1,9 @@
 import { render } from "@testing-library/react";
 
-import ListItem, { IUser } from "../ListItem";
+import ListItem from "../ListItem";
+import { IUserItem } from "GraphQL/queries";
 
-const smapleProps: IUser = {
+const smapleProps: IUserItem = {
   id: "20834902830492309",
   firstName: "Abolfazl",
   lastName: "Panahiazar",

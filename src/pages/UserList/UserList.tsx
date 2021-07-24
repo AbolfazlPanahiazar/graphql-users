@@ -4,13 +4,13 @@ import { useLazyQuery } from "@apollo/client";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import UserListHeader from "components/UserListHeader/UserListHeader";
-import ListItem, { IUser } from "components/ListItem/ListItem";
-import { GET_USERS } from "GraphQL/queries";
+import ListItem from "components/ListItem/ListItem";
+import { GET_USERS, IUserItem, IGetUsersData, IGetUsersVar } from "GraphQL/queries";
 
 const UserList: FC<RouteComponentProps> = (): ReactElement => {
-  const [users, setUsers] = useState<IUser[]>([]);
+  const [users, setUsers] = useState<IUserItem[]>([]);
   const [page, setPage] = useState<number>(0);
-  const [getUsers, { error, loading, data }] = useLazyQuery(GET_USERS, {
+  const [getUsers, { error, data }] = useLazyQuery<IGetUsersData, IGetUsersVar>(GET_USERS, {
     variables: {
       page: page,
       limit: 20,

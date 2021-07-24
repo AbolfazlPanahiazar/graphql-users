@@ -1,15 +1,8 @@
 import { FC, ReactElement } from "react";
 
-export interface IUser {
-  id: string;
-  picture: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  title: string;
-}
+import { IUserItem } from "GraphQL/queries";
 
-const ListItem: FC<IUser> = ({ picture, firstName, lastName, email, title }): ReactElement => {
+const ListItem: FC<IUserItem> = ({ picture, firstName, lastName, email, title }): ReactElement => {
   return (
     <div
       data-testid="listItem"
