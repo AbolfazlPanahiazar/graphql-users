@@ -44,3 +44,59 @@ export const GET_USERS = gql`
     }
   }
 `;
+
+///////////////////////////////////////////////////////////
+
+export interface ILocation {
+  state: string;
+  street: string;
+  city: string;
+  timezone: string;
+  country: string;
+}
+
+export interface IUser {
+  id: string;
+  title: string;
+  firstName: string;
+  lastName: string;
+  gender: string;
+  email: string;
+  phone: string;
+  location: ILocation;
+  picture: string;
+  registerDate: string;
+  dateOfBirth: string;
+}
+
+export interface IUserVar {
+  id: string;
+}
+
+export interface IUserDate {
+  user: IUser;
+}
+
+export const GET_USER = gql`
+  query user($id: String!) {
+    user(id: $id) {
+      id
+      title
+      firstName
+      lastName
+      gender
+      email
+      phone
+      location {
+        state
+        street
+        city
+        timezone
+        country
+      }
+      picture
+      registerDate
+      dateOfBirth
+    }
+  }
+`;

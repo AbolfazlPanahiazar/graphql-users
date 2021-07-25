@@ -16,19 +16,25 @@ const UserList: FC<RouteComponentProps> = (): ReactElement => {
       page: page,
       limit: 20,
     },
+    fetchPolicy: "no-cache",
     onCompleted: (data) => {
       setUsers([...users, ...data.users.data]);
     },
   });
 
-  const next = async () => {
-    await getUsers({
+  const fetchUsers = () => {
+    getUsers({
       variables: {
         page: page,
         limit: 20,
       },
     });
   };
+
+  useEffect(() => {
+    fetchUsers();
+    data && console.log(data);
+  }, []);
 
   useEffect(() => {
     setPage(page + 1);
@@ -43,17 +49,15 @@ const UserList: FC<RouteComponentProps> = (): ReactElement => {
       <UserListHeader />
       {/* user list - start */}
       <InfiniteScroll
-        className="w-full min-h-500"
+        className="w-full"
         dataLength={users.length}
-        next={() => users !== [] && next()}
+        next={fetchUsers}
         hasMore={data ? data.users.offset <= data.users.total : true}
         loader={<Loading />}
         endMessage={<p className="text-center text-white my-3 font-sans font-bold">Yay! You have seen it all</p>}
       >
         {users.map((user: any) => (
-          <div key={user.id} className="h-20">
-            <ListItem {...user} />
-          </div>
+          <ListItem key={user.id} {...user} />
         ))}
       </InfiniteScroll>
       {/* user list - end */}

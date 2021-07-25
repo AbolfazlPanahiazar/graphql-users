@@ -1,4 +1,6 @@
 import { render } from "@testing-library/react";
+import { Router } from "react-router-dom";
+import { createMemoryHistory } from "history";
 
 import ListItem from "../ListItem";
 import { IUserItem } from "GraphQL/queries";
@@ -14,25 +16,45 @@ const smapleProps: IUserItem = {
 
 describe("User list item", () => {
   test("render list item", () => {
-    const { getByTestId } = render(<ListItem {...smapleProps} />);
+    const history = createMemoryHistory();
+    const { getByTestId } = render(
+      <Router history={history}>
+        <ListItem {...smapleProps} />
+      </Router>
+    );
     const item = getByTestId("listItem");
     expect(item).toBeInTheDocument();
   });
 
   test("firstName value injection", () => {
-    const { getByTestId } = render(<ListItem {...smapleProps} />);
+    const history = createMemoryHistory();
+    const { getByTestId } = render(
+      <Router history={history}>
+        <ListItem {...smapleProps} />
+      </Router>
+    );
     const span = getByTestId("firstNameSpan");
     expect(span).toHaveTextContent(smapleProps.firstName);
   });
 
   test("email value injection", () => {
-    const { getByTestId } = render(<ListItem {...smapleProps} />);
+    const history = createMemoryHistory();
+    const { getByTestId } = render(
+      <Router history={history}>
+        <ListItem {...smapleProps} />
+      </Router>
+    );
     const span = getByTestId("emailSpan");
     expect(span).toHaveTextContent(smapleProps.email);
   });
 
   test("image source injection", () => {
-    const { getByTestId } = render(<ListItem {...smapleProps} />);
+    const history = createMemoryHistory();
+    const { getByTestId } = render(
+      <Router history={history}>
+        <ListItem {...smapleProps} />
+      </Router>
+    );
     const img = getByTestId("image");
     expect(img).toHaveAttribute("src", smapleProps.picture);
   });
