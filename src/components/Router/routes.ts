@@ -4,6 +4,7 @@ import { RouteComponentProps } from "react-router-dom";
 // pages
 const UserList = lazy(() => import("pages/UserList/UserList"));
 const NotFound = lazy(() => import("pages/NotFound/NotFound"));
+const UserProfile = lazy(() => import("pages/UserProfile/UserProfile"));
 
 // route interface
 interface IRoute {
@@ -23,6 +24,12 @@ const routes: IRoute[] = [
   },
   {
     id: "2",
+    exact: true,
+    path: "/profile/:id",
+    component: UserProfile,
+  },
+  {
+    id: "3",
     exact: false,
     component: NotFound,
   },

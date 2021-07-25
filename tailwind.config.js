@@ -12,6 +12,7 @@ module.exports = {
     },
     minHeight: {
       '500': '500px',
+      'screen': '100vh',
     }
   },
   variants: {
